@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Parduotuvė — demonstracinė versija</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fbfaf7;--ink:#1f2328;--muted:#68707a;--line:#e6e3dc;--accent:#c4572f;--soft:#f3ece4;--card:#fff}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Manrope,system-ui,sans-serif}
+a{color:inherit}
+button{font:inherit;cursor:pointer}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.bar{background:var(--ink);color:#fff;text-align:center;font-size:13px;padding:7px 12px}
+header{border-bottom:1px solid var(--line);background:var(--bg);position:sticky;top:0;z-index:5}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px}
+.logo{font-family:"DM Serif Display",serif;font-size:26px;text-decoration:none}
+.hdr-right{display:flex;align-items:center;gap:14px}
+.lang button{background:none;border:1px solid var(--line);padding:4px 9px;border-radius:8px;color:var(--muted)}
+.lang button.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+.cart-btn{background:none;border:1px solid var(--ink);border-radius:999px;padding:7px 14px}
+.cart-btn b{background:var(--accent);color:#fff;border-radius:999px;padding:0 7px;margin-left:6px;font-size:13px}
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;padding:56px 0}
+h1,h2,h3{font-family:"DM Serif Display",serif;font-weight:400;line-height:1.15;margin:0 0 14px}
+h1{font-size:50px}
+h2{font-size:34px}
+.lead{color:var(--muted);font-size:18px;max-width:30em}
+.btn{display:inline-block;background:var(--accent);color:#fff;border:0;border-radius:999px;padding:13px 26px;font-weight:700;text-decoration:none}
+.hero-img{aspect-ratio:1;border-radius:32px;background:radial-gradient(circle at 30% 30%,#f2c9b4,#d9825f 70%);display:grid;place-items:end start;padding:18px;color:#5a2a17;font-size:14px}
+section{padding:56px 0;border-top:1px solid var(--line)}
+.products{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.p{background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;display:flex;flex-direction:column}
+.p .img{aspect-ratio:1;display:grid;place-items:center;font-size:13px;color:#00000080}
+.p .body{padding:16px;display:flex;flex-direction:column;gap:6px;flex:1}
+.p h3{font-size:22px;margin:0}
+.p .tag{font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);font-weight:700}
+.p .desc{color:var(--muted);font-size:14px;flex:1}
+.p .row{display:flex;justify-content:space-between;align-items:center;margin-top:8px}
+.p .price{font-weight:700;font-size:18px}
+.p button{background:var(--ink);color:#fff;border:0;border-radius:999px;padding:8px 14px;font-size:14px}
+.why{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.why div{background:var(--soft);border-radius:20px;padding:22px}
+.why p{margin:0;color:var(--muted)}
+.pay{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.pay span{border:1px solid var(--line);border-radius:8px;padding:4px 10px;font-size:13px;color:var(--muted);background:#fff}
+details{border-bottom:1px solid var(--line);padding:14px 0}
+summary{cursor:pointer;font-weight:700}
+details p{color:var(--muted);margin:8px 0 0}
+footer{padding:36px 0;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
+footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.drawer{position:fixed;top:0;right:0;height:100%;width:min(380px,100%);background:#fff;border-left:1px solid var(--line);transform:translateX(100%);transition:transform .25s;z-index:10;padding:22px;display:flex;flex-direction:column;gap:12px}
+.drawer.open{transform:none}
+.drawer .items{flex:1;overflow:auto}
+.drawer .it{display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding:10px 0;gap:10px}
+.drawer .it button{background:none;border:1px solid var(--line);border-radius:6px;width:26px}
+.drawer .total{font-weight:700;display:flex;justify-content:space-between}
+.x{align-self:flex-end;background:none;border:0;font-size:22px}
+@media (max-width:860px){
+  .hero{grid-template-columns:1fr;padding-top:32px}
+  h1{font-size:36px}
+  .products{grid-template-columns:repeat(2,1fr)}
+  .why{grid-template-columns:1fr}
+}
+@media (max-width:460px){.products{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="bar" data-t="bar"></div>
+<header><div class="wrap">
+  <a class="logo" href="#">Prekės ženklas</a>
+  <div class="hdr-right">
+    <div class="lang"><button data-l="lt" class="on">LT</button> <button data-l="en">EN</button></div>
+    <button class="cart-btn" id="openCart"><span data-t="cart"></span><b id="count">0</b></button>
+  </div>
+</div></header>
+
+<main class="wrap">
+  <div class="hero">
+    <div>
+      <h1 data-t="h1"></h1>
+      <p class="lead" data-t="lead"></p>
+      <a class="btn" href="#produktai" data-t="shop"></a>
+    </div>
+    <div class="hero-img" data-t="heroimg"></div>
+  </div>
+
+  <section id="produktai">
+    <h2 data-t="products"></h2>
+    <div class="products" id="grid"></div>
+  </section>
+
+  <section>
+    <h2 data-t="whyh"></h2>
+    <div class="why">
+      <div><h3 data-t="w1h"></h3><p data-t="w1"></p></div>
+      <div><h3 data-t="w2h"></h3><p data-t="w2"></p></div>
+      <div><h3 data-t="w3h"></h3><p data-t="w3"></p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2 data-t="faqh"></h2>
+    <details><summary data-t="q1"></summary><p data-t="a1"></p></details>
+    <details><summary data-t="q2"></summary><p data-t="a2"></p></details>
+    <details><summary data-t="q3"></summary><p data-t="a3"></p></details>
+  </section>
+</main>
+
+<footer><div class="wrap">
+  <div>© 2026 · <span data-t="demo"></span></div>
+  <div class="pay"><span>Visa</span><span>Mastercard</span><span>Apple Pay</span><span>Google Pay</span><span data-t="banks"></span></div>
+</div></footer>
+
+<aside class="drawer" id="drawer">
+  <button class="x" id="closeCart">×</button>
+  <h3 data-t="cart"></h3>
+  <div class="items" id="items"></div>
+  <div class="total"><span data-t="total"></span><span id="sum">0,00 €</span></div>
+  <button class="btn" onclick="alert(T().checkout)" data-t="pay"></button>
+</aside>
+
+<script>
+const PRODUCTS=[
+  {id:1,price:19.9,color:"#f4d9c8",lt:["Produktas 1","Bestseleris","Trumpas aprašymas: kam skirta ir kuo ypatinga."],en:["Product 1","Bestseller","Short description: who it is for and what makes it special."]},
+  {id:2,price:24.9,color:"#dfe8d6",lt:["Produktas 2","Naujiena","Trumpas aprašymas: kam skirta ir kuo ypatinga."],en:["Product 2","New","Short description: who it is for and what makes it special."]},
+  {id:3,price:29.9,color:"#e3dcef",lt:["Produktas 3","","Trumpas aprašymas: kam skirta ir kuo ypatinga."],en:["Product 3","","Short description: who it is for and what makes it special."]},
+  {id:4,price:63.5,color:"#f1e6c4",lt:["Rinkinys","−15 %","Visi trys produktai kartu — pigiau nei atskirai."],en:["Bundle","−15%","All three products together — cheaper than separately."]}
+];
+const TXT={
+  lt:{bar:"Nemokamas pristatymas nuo 40 € · Demonstracinė versija",cart:"Krepšelis",h1:"Čia bus jūsų pagrindinė žinutė",lead:"Vienas sakinys apie tai, ką parduodate ir kodėl verta pirkti būtent iš jūsų. Spalvos ir nuotraukos bus pritaikytos jūsų prekės ženklui.",shop:"Žiūrėti produktus",heroimg:"Čia bus jūsų produkto nuotrauka",products:"Produktai",add:"Į krepšelį",whyh:"Kodėl verta rinktis mus",w1h:"Greitas pristatymas",w1:"Į paštomatą per 1–2 darbo dienas visoje Lietuvoje.",w2h:"Saugus atsiskaitymas",w2:"Kortele, Apple Pay, Google Pay arba per banką.",w3h:"Grąžinimas 14 d.",w3:"Jei netiks — grąžinsime pinigus be klausimų.",faqh:"Dažni klausimai",q1:"Kaip greitai gausiu užsakymą?",a1:"Išsiunčiame per 1 darbo dieną, paštomatą pasiekia per 1–2 dienas.",q2:"Kaip galiu sumokėti?",a2:"Kortele, Apple Pay, Google Pay arba per elektroninę bankininkystę.",q3:"Ar galiu grąžinti prekę?",a3:"Taip, per 14 dienų nuo gavimo.",total:"Iš viso",pay:"Apmokėti",checkout:"Tikroje svetainėje čia atsidarys apmokėjimas.",empty:"Krepšelis tuščias",banks:"Bankų nuorodos",demo:"Demonstracinė versija"},
+  en:{bar:"Free delivery from €40 · Demo version",cart:"Cart",h1:"Your main message goes here",lead:"One sentence about what you sell and why it is worth buying from you. Colours and photos will match your brand.",shop:"See products",heroimg:"Your product photo goes here",products:"Products",add:"Add to cart",whyh:"Why choose us",w1h:"Fast delivery",w1:"To a parcel locker in 1–2 working days anywhere in Lithuania.",w2h:"Secure payment",w2:"Card, Apple Pay, Google Pay or bank link.",w3h:"14-day returns",w3:"If it does not suit you, we refund, no questions asked.",faqh:"FAQ",q1:"How fast will I get my order?",a1:"We ship within 1 working day; parcel lockers take 1–2 days.",q2:"How can I pay?",a2:"Card, Apple Pay, Google Pay or online banking.",q3:"Can I return an item?",a3:"Yes, within 14 days of delivery.",total:"Total",pay:"Pay",checkout:"On the real site the payment page opens here.",empty:"Your cart is empty",banks:"Bank links",demo:"Demo version"}
+};
+let lang="lt",cart={};
+const T=()=>TXT[lang];
+const eur=n=>(lang==="lt"?n.toFixed(2).replace(".",",")+" €":"€"+n.toFixed(2));
+function render(){
+  document.documentElement.lang=lang;
+  document.querySelectorAll("[data-t]").forEach(e=>e.textContent=T()[e.dataset.t]);
+  document.querySelectorAll(".lang button").forEach(b=>b.classList.toggle("on",b.dataset.l===lang));
+  document.getElementById("grid").innerHTML=PRODUCTS.map(p=>{const[n,t,d]=p[lang];return `<div class="p"><div class="img" style="background:${p.color}">${lang==="lt"?"Nuotrauka":"Photo"}</div><div class="body">${t?`<span class="tag">${t}</span>`:""}<h3>${n}</h3><div class="desc">${d}</div><div class="row"><span class="price">${eur(p.price)}</span><button data-add="${p.id}">${T().add}</button></div></div></div>`}).join("");
+  const ids=Object.keys(cart).filter(k=>cart[k]>0);
+  document.getElementById("count").textContent=ids.reduce((s,k)=>s+cart[k],0);
+  document.getElementById("items").innerHTML=ids.length?ids.map(k=>{const p=PRODUCTS.find(x=>x.id==k);return `<div class="it"><span>${p[lang][0]}</span><span><button data-m="${k}">−</button> ${cart[k]} <button data-add="${k}">+</button></span><span>${eur(p.price*cart[k])}</span></div>`}).join(""):`<p>${T().empty}</p>`;
+  document.getElementById("sum").textContent=eur(ids.reduce((s,k)=>s+PRODUCTS.find(x=>x.id==k).price*cart[k],0));
+}
+document.addEventListener("click",e=>{
+  const a=e.target.dataset.add,m=e.target.dataset.m,l=e.target.dataset.l;
+  if(a){cart[a]=(cart[a]||0)+1;render()}
+  if(m){cart[m]--;render()}
+  if(l){lang=l;render()}
+});
+document.getElementById("openCart").onclick=()=>document.getElementById("drawer").classList.add("open");
+document.getElementById("closeCart").onclick=()=>document.getElementById("drawer").classList.remove("open");
+render();
+</script>
+</body>
+</html>
