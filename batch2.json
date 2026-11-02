@@ -1,0 +1,36 @@
+[
+  {
+    "slug": "malidenta",
+    "schema": "Dentist",
+    "name": "Malidenta",
+    "city": "Panevėžys",
+    "street": "Klaipėdos g. 25",
+    "title": "Odontologas Panevėžyje | Malidenta, Klaipėdos g. 25",
+    "desc": "Dantų gydymas, profesionali burnos higiena ir protezavimas Panevėžyje. Registracija internetu.",
+    "bg": "#f3f8f9", "accent": "#1f7a8c", "pic": "linear-gradient(135deg,#9fd3dc,#2f8a9c)",
+    "h1": "Odontologijos klinika Panevėžyje",
+    "lead": "Dantų gydymas, burnos higiena ir protezavimas Klaipėdos gatvėje. Užsiregistruokite vizitui internetu — patogiu laiku.",
+    "cta": "Registruotis vizitui",
+    "svc_title": "Paslaugos",
+    "services": [["Dantų gydymas", "Ėduonies gydymas, plombavimas, kanalų gydymas."], ["Burnos higiena", "Profesionalus dantų valymas ir apnašų šalinimas."], ["Protezavimas", "Vainikėliai, tiltai, išimami protezai (patikslinsime)."]],
+    "why": [["Registracija internetu", "Parašykite — suderinsime laiką."], ["Kompensuojamas protezavimas", "Informacija apie PSDF kompensaciją (patikslinsime)."], ["Patogi vieta", "Klaipėdos g. 25, Panevėžys."]],
+    "contacts": ["Klaipėdos g. 25, Panevėžys", "Tel.: čia bus jūsų numeris", "El. paštas: marius.malinauskas@gmail.com", "Darbo laikas: čia bus jūsų darbo laikas"]
+  },
+  {
+    "slug": "faunaveta",
+    "schema": "VeterinaryCare",
+    "name": "FaunaVeta",
+    "city": "Kretinga",
+    "street": "Šventosios g. 1A-1",
+    "title": "Veterinarijos klinika Kretingoje | FaunaVeta",
+    "desc": "Gyvūnų gydymas, vakcinacija, čipavimas ir chirurgija Kretingoje, Šventosios g. 1A.",
+    "bg": "#f6f8f2", "accent": "#4f7d3a", "pic": "linear-gradient(135deg,#c9dfb4,#5f8f47)",
+    "h1": "Veterinarijos klinika Kretingoje",
+    "lead": "Rūpinamės šunimis, katėmis ir kitais augintiniais: apžiūra, vakcinacija, čipavimas ir gydymas Šventosios gatvėje.",
+    "cta": "Registruotis vizitui",
+    "svc_title": "Paslaugos",
+    "services": [["Apžiūra ir gydymas", "Konsultacija, diagnostika, gydymas."], ["Vakcinacija ir čipavimas", "Skiepai, augintinio pasas, mikroschema."], ["Chirurgija", "Kastracija, sterilizacija ir kitos operacijos (patikslinsime)."]],
+    "why": [["Kretingoje", "Šventosios g. 1A — lengva atvykti."], ["Registracija internetu", "Parašykite — suderinsime laiką."], ["Augintinių pasai", "Paruošime kelionei į užsienį (patikslinsime)."]],
+    "contacts": ["Šventosios g. 1A-1, Kretinga", "Tel.: čia bus jūsų numeris", "El. paštas: faunaveta@gmail.com", "Darbo laikas: čia bus jūsų darbo laikas"]
+  }
+]
