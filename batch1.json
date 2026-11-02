@@ -1,0 +1,53 @@
+[
+  {
+    "slug": "ginara",
+    "schema": "AutoRepair",
+    "name": "Ginara autoservisas",
+    "city": "Tauragė",
+    "street": "Pramonės g. 16E",
+    "title": "Sunkvežimių remontas Tauragėje | Ginara autoservisas",
+    "desc": "Sunkvežimių remontas, elektra, diagnostika, techninė priežiūra ir plovykla Tauragėje, Pramonės g. 16E.",
+    "bg": "#f4f5f7", "accent": "#d2521f", "pic": "linear-gradient(135deg,#3a4250,#1f242c)",
+    "h1": "Sunkvežimių remontas ir diagnostika Tauragėje",
+    "lead": "Remontuojame sunkvežimius ir kitą transportą nuo 2005 metų: elektra, diagnostika, techninė priežiūra ir plovykla vienoje vietoje — Pramonės g. 16E.",
+    "cta": "Registruotis remontui",
+    "svc_title": "Paslaugos",
+    "services": [["Sunkvežimių remontas", "Variklio, važiuoklės ir stabdžių remontas."], ["Elektra ir diagnostika", "Kompiuterinė diagnostika ir elektros gedimų paieška."], ["Techninė priežiūra", "Planinis aptarnavimas, tepalų ir filtrų keitimas."], ["Plovykla", "Sunkvežimių ir priekabų plovimas."], ["Tachografai", "Patikra ir aptarnavimas (patikslinsime pagal jūsų paslaugas)."], ["Skubus remontas", "Kai mašina turi grįžti į kelią kuo greičiau."]],
+    "why": [["Nuo 2005 m.", "Ilgametė patirtis su sunkiuoju transportu."], ["Komanda", "18 darbuotojų — darbus atliekame greitai."], ["Viskas vietoje", "Remontas, diagnostika ir plovykla viename kieme."]],
+    "contacts": ["Pramonės g. 16E, Tauragė", "Tel.: čia bus jūsų numeris", "El. paštas: ginaraservisas@gmail.com", "Darbo laikas: čia bus jūsų darbo laikas"]
+  },
+  {
+    "slug": "upes-kepyklele",
+    "schema": "Bakery",
+    "name": "Upės kepyklėlė",
+    "city": "Kupiškis",
+    "street": "Gedimino g. 33",
+    "title": "Upės kepyklėlė Kupiškyje — šviežia duona ir pyragai",
+    "desc": "Šviežia duona, pyragai ir užsakomieji tortai Kupiškyje, Gedimino g. 33.",
+    "bg": "#fbf7f0", "accent": "#a0612c", "pic": "linear-gradient(135deg,#e9c99a,#b97b43)",
+    "h1": "Šviežia duona ir pyragai Kupiškyje",
+    "lead": "Kepame kasdien — duona, bandelės ir pyragai prie Kupos upės. Priimame ir šventinių tortų bei vaišių užsakymus.",
+    "cta": "Užsakyti tortą",
+    "svc_title": "Ką kepame",
+    "services": [["Duona", "Kasdien šviežia, kepta vietoje."], ["Bandelės ir pyragai", "Prie kavos ar į kelionę."], ["Tortai užsakymui", "Gimtadieniams, krikštynoms, šventėms."]],
+    "why": [["Vietinė kepyklėlė", "Kepame čia pat, Gedimino gatvėje."], ["Užsakymai iš anksto", "Parašykite — paruošime iki jūsų šventės."], ["Kava vietoje", "Užsukite ir pasivaišinkite (patikslinsime)."]],
+    "contacts": ["Gedimino g. 33, Kupiškis", "Tel.: +370 615 55558", "El. paštas: upeskepyklele@gmail.com", "Darbo laikas: čia bus jūsų darbo laikas"]
+  },
+  {
+    "slug": "aurora-siauliai",
+    "schema": "BeautySalon",
+    "name": "Aurora grožio salonas",
+    "city": "Šiauliai",
+    "street": "Dvaro g. 55",
+    "title": "Grožio salonas Šiauliuose | Aurora, Dvaro g. 55",
+    "desc": "Kirpimas, dažymas, manikiūras ir kosmetologija Šiauliuose, Dvaro g. 55. Registracija internetu.",
+    "bg": "#fbf6f6", "accent": "#b5546b", "pic": "linear-gradient(135deg,#f0c7cf,#c77b8d)",
+    "h1": "Grožio salonas Šiauliuose, Dvaro gatvėje",
+    "lead": "Kirpimas, dažymas, manikiūras ir veido procedūros. Užsiregistruokite internetu — patogiu laiku, be skambučių.",
+    "cta": "Registruotis",
+    "svc_title": "Paslaugos ir kainos",
+    "services": [["Kirpimas ir šukuosenos", "Moterims, vyrams ir vaikams — nuo X €."], ["Plaukų dažymas", "Vienspalvis, sruogelės, tonavimas — nuo X €."], ["Manikiūras ir pedikiūras", "Gelinis lakavimas, priežiūra — nuo X €."]],
+    "why": [["Registracija internetu", "Laisvą laiką matote iš karto."], ["Patyrę meistrai", "Čia bus jūsų komandos pristatymas."], ["Centre", "Dvaro g. 55, Šiauliai."]],
+    "contacts": ["Dvaro g. 55, Šiauliai", "Tel.: čia bus jūsų numeris", "El. paštas: salonasaurora@gmail.com", "Darbo laikas: čia bus jūsų darbo laikas"]
+  }
+]
