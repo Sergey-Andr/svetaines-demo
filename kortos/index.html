@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="lt">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Metaforinės kortos — juodraštis</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#2b3a34;--felt:#34473f;--ink:#f4efe6;--muted:#c9c1b2;--accent:#d9a55b;--back:#6b4b7a}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 Manrope,system-ui,sans-serif;display:flex;flex-direction:column;overflow:hidden}
+.demo{background:#111;color:#ddd;text-align:center;font-size:12px;padding:5px 10px}
+.bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:10px 14px;background:#22302a}
+.bar h1{font-size:16px;margin:0 12px 0 0;font-weight:800}
+.bar select,.bar button{font:inherit;background:#3d5248;color:var(--ink);border:1px solid #50685c;border-radius:10px;padding:7px 12px;cursor:pointer}
+.bar button.main{background:var(--accent);color:#2b2216;border-color:var(--accent);font-weight:700}
+.bar .sp{flex:1}
+.bar .count{color:var(--muted);font-size:13px}
+#table{position:relative;flex:1;background:radial-gradient(ellipse at center,var(--felt),var(--bg));overflow:hidden;touch-action:none}
+.hint{position:absolute;inset:0;display:grid;place-items:center;color:var(--muted);text-align:center;pointer-events:none;padding:20px}
+.card{position:absolute;width:150px;height:220px;perspective:900px;cursor:grab;user-select:none}
+.card.drag{cursor:grabbing;z-index:999}
+.inner{position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d}
+.card.open .inner{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;border-radius:14px;backface-visibility:hidden;box-shadow:0 8px 22px #0006;overflow:hidden}
+.backside{background:repeating-linear-gradient(45deg,var(--back),var(--back) 10px,#7d5a8c 10px,#7d5a8c 20px);border:6px solid #f4efe6}
+.front{transform:rotateY(180deg);background:#f4efe6;display:flex;flex-direction:column}
+.front .img{flex:1}
+.front .word{padding:8px;text-align:center;color:#2b2216;font-weight:700;font-size:16px}
+.card.word .front .img{display:none}
+.card.word .front .word{flex:1;display:grid;place-items:center;font-size:22px}
+.card.word{height:110px;width:170px}
+#zoom{position:fixed;inset:0;background:#000c;display:none;place-items:center;z-index:2000}
+#zoom.on{display:grid}
+#zoom .big{width:min(70vw,420px);aspect-ratio:150/220;border-radius:20px;overflow:hidden;background:#f4efe6;display:flex;flex-direction:column;box-shadow:0 20px 60px #000}
+#zoom .big .img{flex:1}
+#zoom .big .word{padding:14px;text-align:center;color:#2b2216;font-weight:800;font-size:26px}
+#zoom .big.word{aspect-ratio:170/110}
+#zoom .big.word .img{display:none}
+#zoom .big.word .word{flex:1;display:grid;place-items:center;font-size:40px}
+.note{position:absolute;right:14px;bottom:12px;max-width:330px;background:#0008;border-radius:12px;padding:10px 14px;color:var(--muted);font-size:13px}
+@media(max-width:700px){.card{width:110px;height:160px}.card.word{width:130px;height:84px}.note{display:none}}
+</style>
+</head>
+<body>
+<div class="demo">Juodraštis-pavyzdys. Kortų paveikslėliai laikini — būtų įkeltos jūsų kortos.</div>
+<div class="bar">
+  <h1>Metaforinės kortos</h1>
+  <select id="deck">
+    <option value="img">Paveikslėlių kaladė</option>
+    <option value="word">Žodžių kaladė</option>
+  </select>
+  <button class="main" id="draw">Traukti kortą</button>
+  <button id="three">Traukti 3</button>
+  <button id="openAll">Atversti visas</button>
+  <button id="shuffle">Sumaišyti</button>
+  <button id="clear">Išvalyti stalą</button>
+  <span class="sp"></span>
+  <span class="count" id="count"></span>
+  <button id="full">Visas ekranas</button>
+</div>
+<div id="table">
+  <div class="hint" id="hint">Pasirinkite kaladę ir spauskite „Traukti kortą“.<br>Korta atsiranda užversta: spustelėkite — atsivers, du kartus — padidės, tempkite — perkelsite.</div>
+  <div class="note">Konsultacijos metu ekraną galima rodyti per Zoom ar Meet. Galima pridėti bendrą stalą per nuorodą, kad klientas trauktų kortas pats.</div>
+</div>
+<div id="zoom"></div>
+<script>
+const WORDS=["Kelias","Baimė","Namai","Laisvė","Vaikystė","Riba","Pasirinkimas","Tyla","Jėga","Ilgesys","Pradžia","Slėpinys","Atleidimas","Kliūtis","Džiaugsmas","Pagalba","Vienatvė","Svajonė","Nuoskauda","Ramybė"];
+const IMG=Array.from({length:40},(_,i)=>{
+  const h1=(i*47)%360,h2=(i*47+70+(i%5)*25)%360,a=(i*33)%360,x=20+(i*17)%60,y=20+(i*29)%60;
+  return {bg:`radial-gradient(circle at ${x}% ${y}%,hsl(${h2} 60% 70%),transparent 45%),linear-gradient(${a}deg,hsl(${h1} 45% 45%),hsl(${h2} 50% 30%))`,label:"Nr. "+(i+1)};
+});
+const table=document.getElementById("table"),hint=document.getElementById("hint"),zoom=document.getElementById("zoom");
+let piles={img:[],word:[]},z=10;
+function fresh(k){piles[k]=(k==="img"?IMG.map((c,i)=>({type:"img",...c})):WORDS.map(w=>({type:"word",label:w})));mix(piles[k]);}
+function mix(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}}
+function deck(){return document.getElementById("deck").value}
+function count(){const k=deck();document.getElementById("count").textContent="Kaladėje liko: "+piles[k].length;}
+function place(c,i,n){
+  const el=document.createElement("div");
+  el.className="card"+(c.type==="word"?" word":"");
+  el.innerHTML=`<div class="inner"><div class="face backside"></div><div class="face front"><div class="img" style="background:${c.bg||""}"></div><div class="word">${c.label}</div></div></div>`;
+  const W=table.clientWidth,H=table.clientHeight,cw=c.type==="word"?170:150,ch=c.type==="word"?110:220;
+  const gap=cw+24,start=W/2-((n-1)*gap)/2-cw/2;
+  el.style.left=Math.max(10,Math.min(W-cw-10,start+i*gap+(Math.random()*30-15)))+"px";
+  el.style.top=Math.max(10,H/2-ch/2+(Math.random()*40-20))+"px";
+  el.style.zIndex=++z;
+  el._c=c;
+  table.appendChild(el);
+  hook(el);
+}
+function draw(n){
+  const k=deck();
+  for(let i=0;i<n;i++){
+    if(!piles[k].length){alert("Kaladė tuščia — spauskite „Sumaišyti“.");break;}
+    place(piles[k].pop(),i,n);
+  }
+  hint.style.display="none";count();
+}
+function hook(el){
+  let sx,sy,ox,oy,moved=false,last=0;
+  el.addEventListener("pointerdown",e=>{
+    el.setPointerCapture(e.pointerId);sx=e.clientX;sy=e.clientY;ox=el.offsetLeft;oy=el.offsetTop;moved=false;el.style.zIndex=++z;el.classList.add("drag");
+  });
+  el.addEventListener("pointermove",e=>{
+    if(!el.classList.contains("drag"))return;
+    const dx=e.clientX-sx,dy=e.clientY-sy;
+    if(Math.abs(dx)+Math.abs(dy)>4)moved=true;
+    el.style.left=ox+dx+"px";el.style.top=oy+dy+"px";
+  });
+  el.addEventListener("pointerup",()=>{
+    el.classList.remove("drag");
+    if(moved)return;
+    const now=Date.now();
+    if(now-last<350&&el.classList.contains("open")){show(el._c);last=0;return;}
+    last=now;
+    el.classList.add("open");
+  });
+}
+function show(c){
+  zoom.innerHTML=`<div class="big${c.type==="word"?" word":""}"><div class="img" style="background:${c.bg||""}"></div><div class="word">${c.label}</div></div>`;
+  zoom.classList.add("on");
+}
+zoom.onclick=()=>zoom.classList.remove("on");
+document.getElementById("draw").onclick=()=>draw(1);
+document.getElementById("three").onclick=()=>draw(3);
+document.getElementById("openAll").onclick=()=>table.querySelectorAll(".card").forEach(c=>c.classList.add("open"));
+document.getElementById("shuffle").onclick=()=>{fresh(deck());table.querySelectorAll(".card").forEach(c=>{if(c._c.type===deck())c.remove()});count();};
+document.getElementById("clear").onclick=()=>{table.querySelectorAll(".card").forEach(c=>c.remove());hint.style.display="grid";};
+document.getElementById("deck").onchange=count;
+document.getElementById("full").onclick=()=>{document.fullscreenElement?document.exitFullscreen():document.documentElement.requestFullscreen()};
+fresh("img");fresh("word");count();
+</script>
+</body>
+</html>
