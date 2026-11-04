@@ -1,0 +1,53 @@
+[
+  {
+    "slug": "pamario-klinika",
+    "schema": "Dentist",
+    "name": "Pamario odontologijos klinika",
+    "city": "Klaipėda",
+    "street": "Pievų tako g. 8",
+    "title": "Odontologijos klinika Klaipėdoje | Pamario odontologijos klinika",
+    "desc": "Dantų gydymas, protezavimas su savo dantų technikos laboratorija ir dantų balinimas Philips Zoom.",
+    "bg": "#f2f7f8", "accent": "#1c6e86", "pic": "linear-gradient(135deg,#a8d8e4,#1c6e86)",
+    "h1": "Pamario odontologijos klinika",
+    "lead": "Dantų gydymas, protezavimas ir balinimas vienoje vietoje. Užsiregistruokite vizitui internetu — atsakysime ir suderinsime laiką.",
+    "cta": "Registruotis vizitui",
+    "svc_title": "Paslaugos",
+    "services": [["Terapinis gydymas", "Ėduonies gydymas, plombavimas, kanalų gydymas."], ["Protezavimas", "Vainikėliai, tiltai, protezai — gaminami mūsų dantų technikos laboratorijoje."], ["Dantų balinimas", "Philips Zoom balinimas klinikoje."]],
+    "why": [["Sava laboratorija", "Protezai gaminami vietoje — greičiau ir lengviau pataisyti."], ["Registracija internetu", "Parašykite — suderinsime laiką."], ["Pamario regionas", "Klaipėda ir Šilutė (patikslinsime)."]],
+    "contacts": ["Pievų tako g. 8, Klaipėda", "Tel.: čia bus jūsų numeris", "El. paštas: info@pamarioklinika.lt", "Darbo laikas: čia bus jūsų darbo laikas"]
+  },
+  {
+    "slug": "euphorbia",
+    "schema": "BeautySalon",
+    "name": "Euphorbia Beauty House",
+    "city": "Vilnius",
+    "street": "Moravų g. 7",
+    "title": "Grožio salonas Vilniuje | Euphorbia Beauty House, Moravų g. 7",
+    "desc": "Manikiūras, pedikiūras, kirpimai ir dažymas, veido procedūros ir masažai Vilniuje, Moravų g. 7.",
+    "bg": "#faf6f3", "accent": "#7a4e6b", "pic": "linear-gradient(135deg,#ecc9d6,#7a4e6b)",
+    "h1": "Euphorbia Beauty House",
+    "lead": "Manikiūras, pedikiūras, plaukai, veido procedūros ir masažai Moravų gatvėje. Daugiau nei 4000 klientų atsiliepimų.",
+    "cta": "Registruotis",
+    "svc_title": "Paslaugos",
+    "services": [["Manikiūras ir pedikiūras", "Klasikinis ir aparatinis, gelinis lakavimas."], ["Plaukai", "Kirpimai, dažymas, šukuosenos."], ["Veidas ir kūnas", "Veido valymas, procedūros, nugaros masažas."]],
+    "why": [["4,9 iš 5", "Daugiau nei 4000 klientų atsiliepimų."], ["Registracija internetu", "Pasirinkite meistrą ir laiką patys."], ["Patogi vieta", "Moravų g. 7, Vilnius."]],
+    "contacts": ["Moravų g. 7, Vilnius", "Tel.: čia bus jūsų numeris", "El. paštas: jolantarozan@gmail.com", "Darbo laikas: čia bus jūsų darbo laikas"]
+  },
+  {
+    "slug": "auratra",
+    "schema": "AutoRepair",
+    "name": "Auratra",
+    "city": "Kaunas",
+    "street": "T. Masiulio g. 16A",
+    "title": "Autoservisas Kaune | Auratra, T. Masiulio g. 16A",
+    "desc": "Automobilių remontas, diagnostika ir atsarginės dalys Kaune.",
+    "bg": "#f5f6f7", "accent": "#c4421a", "pic": "linear-gradient(135deg,#9aa3ab,#2c3339)",
+    "h1": "Autoservisas Kaune",
+    "lead": "Automobilių remontas, diagnostika ir atsarginės dalys T. Masiulio gatvėje. Užsiregistruokite remontui internetu.",
+    "cta": "Registruotis remontui",
+    "svc_title": "Paslaugos",
+    "services": [["Remontas", "Variklis, važiuoklė, stabdžiai (patikslinsime)."], ["Diagnostika", "Kompiuterinė diagnostika ir gedimų paieška."], ["Atsarginės dalys", "Užsakome ir sumontuojame."]],
+    "why": [["Kaune", "T. Masiulio g. 16A."], ["Registracija internetu", "Parašykite — suderinsime laiką."], ["Aiški kaina", "Kainą pasakome prieš darbus."]],
+    "contacts": ["T. Masiulio g. 16A, Kaunas", "Tel.: čia bus jūsų numeris", "El. paštas: auratrainfo@gmail.com", "Darbo laikas: čia bus jūsų darbo laikas"]
+  }
+]
