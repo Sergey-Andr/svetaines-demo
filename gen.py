@@ -59,6 +59,8 @@ UI = {
            "photo": "Čia bus jūsų nuotrauka", "why": "Kodėl mes", "map": "Čia bus Google žemėlapis"},
     "lv": {"country": "LV", "demo": "Melnraksts „{name}“ — teksti un foto tiks aizstāti ar jūsu", "contacts": "Kontakti",
            "photo": "Šeit būs jūsu foto", "why": "Kāpēc mēs", "map": "Šeit būs Google karte"},
+    "et": {"country": "EE", "demo": "Mustand „{name}“ — tekstid ja fotod asendatakse teie omadega", "contacts": "Kontakt",
+           "photo": "Siia tuleb teie foto", "why": "Miks meie", "map": "Siia tuleb Google'i kaart"},
 }
 
 def card(t, p):
