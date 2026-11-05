@@ -1,7 +1,7 @@
 import json, sys, html, pathlib
 
 TPL = """<!doctype html>
-<html lang="lt">
+<html lang="{lang}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -40,32 +40,42 @@ footer{{padding:30px 0;color:var(--muted);font-size:14px;border-top:1px solid va
 </style>
 </head>
 <body>
-<div class="demo">Juodraštis „{name}“ — tekstai ir nuotraukos bus pakeisti jūsų</div>
+<div class="demo">{t_demo}</div>
 <header><div class="wrap"><a class="logo" href="#">{name}</a>
-<nav><a href="#paslaugos">{svc_title}</a><a href="#kontaktai">Kontaktai</a></nav></div></header>
+<nav><a href="#paslaugos">{svc_title}</a><a href="#kontaktai">{t_contacts}</a></nav></div></header>
 <main class="wrap">
 <div class="hero"><div><h1>{h1}</h1><p class="lead">{lead}</p><a class="btn" href="#kontaktai">{cta}</a></div>
-<div class="pic">Čia bus jūsų nuotrauka</div></div>
+<div class="pic">{t_photo}</div></div>
 <section id="paslaugos"><h2>{svc_title}</h2><div class="grid">{cards}</div></section>
-<section><h2>Kodėl mes</h2><div class="grid">{why}</div></section>
-<section id="kontaktai"><h2>Kontaktai</h2><div class="info"><div><p>{contacts}</p></div><div class="map">Čia bus Google žemėlapis</div></div></section>
+<section><h2>{t_why}</h2><div class="grid">{why}</div></section>
+<section id="kontaktai"><h2>{t_contacts}</h2><div class="info"><div><p>{contacts}</p></div><div class="map">{t_map}</div></div></section>
 </main>
 <footer><div class="wrap">© 2026 {name} · {city}</div></footer>
 </body></html>
 """
 
+UI = {
+    "lt": {"country": "LT", "demo": "Juodraštis „{name}“ — tekstai ir nuotraukos bus pakeisti jūsų", "contacts": "Kontaktai",
+           "photo": "Čia bus jūsų nuotrauka", "why": "Kodėl mes", "map": "Čia bus Google žemėlapis"},
+    "lv": {"country": "LV", "demo": "Melnraksts „{name}“ — teksti un foto tiks aizstāti ar jūsu", "contacts": "Kontakti",
+           "photo": "Šeit būs jūsu foto", "why": "Kāpēc mēs", "map": "Šeit būs Google karte"},
+}
+
 def card(t, p):
     return f'<div class="card"><h3>{html.escape(t)}</h3><p>{html.escape(p)}</p></div>'
 
 def build(c, out):
+    ui = UI[c.get("lang", "lt")]
     ld = {"@context": "https://schema.org", "@type": c["schema"], "name": c["name"],
-          "address": {"@type": "PostalAddress", "streetAddress": c["street"], "addressLocality": c["city"], "addressCountry": "LT"}}
+          "address": {"@type": "PostalAddress", "streetAddress": c["street"], "addressLocality": c["city"], "addressCountry": ui["country"]}}
     page = TPL.format(
         title=html.escape(c["title"]), desc=html.escape(c["desc"]), ld=json.dumps(ld, ensure_ascii=False),
         bg=c["bg"], accent=c["accent"], pic=c["pic"], name=html.escape(c["name"]), city=html.escape(c["city"]),
         h1=html.escape(c["h1"]), lead=html.escape(c["lead"]), cta=html.escape(c["cta"]), svc_title=html.escape(c["svc_title"]),
         cards="".join(card(*x) for x in c["services"]), why="".join(card(*x) for x in c["why"]),
-        contacts="<br>".join(html.escape(x) for x in c["contacts"]))
+        contacts="<br>".join(html.escape(x) for x in c["contacts"]),
+        lang=c.get("lang", "lt"), t_demo=html.escape(ui["demo"].format(name=c["name"])), t_contacts=ui["contacts"],
+        t_photo=ui["photo"], t_why=ui["why"], t_map=ui["map"])
     p = pathlib.Path(out); p.mkdir(parents=True, exist_ok=True)
     (p / "index.html").write_text(page, encoding="utf-8")
 
