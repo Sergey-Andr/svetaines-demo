@@ -44,7 +44,7 @@
 {"slug": "kiiskar", "lang": "et", "schema": "AutoRepair", "name": "Kiiskar", "city": "Muhu", "street": "Liiva küla",
 "title": "Autoremont Muhus, Liiva küla | Kiiskar", "desc": "Autode remont ja hooldus ning autokaubad Muhus, Liiva külas. E–R 9–18.",
 "bg": "#f4f5f1", "accent": "#3d6b4a", "pic": "linear-gradient(135deg,#cfdcce,#2c4a35)",
-"h1": "Autoremont Muhus", "lead": "Remont, hooldus ja autokaubad Liiva külas. Kirjeldage murest vormis — helistame tagasi või anname aja.", "cta": "Küsi aega", "svc_title": "Teenused",
+"h1": "Autoremont Muhus", "lead": "Remont, hooldus ja autokaubad Liiva külas. Kirjeldage muret vormis — helistame tagasi või anname aja.", "cta": "Küsi aega", "svc_title": "Teenused",
 "services": [["Remont", "Mootor, veermik, pidurid (täpsustame)."], ["Hooldus", "Õli, filtrid, rehvid (täpsustame)."], ["Autokaubad", "Kulumaterjalid kohapeal."]],
 "why": [["Muhus kohapeal", "Ei pea sõitma Kuressaarde."], ["E–R 9–18", "Ajad näha enne helistamist."], ["Aeg vormiga", "Ka suvitajatele ja läbisõitjatele."]],
 "contacts": ["Liiva küla, Muhu vald", "Tel: +372 5330 4885", "E-post: kiiskar@hot.ee", "E–R 9–18"]}
