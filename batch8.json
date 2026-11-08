@@ -38,7 +38,7 @@
 "title": "Kasutatud autod Viljandis, Pärnu mnt 3 | Sky Auto", "desc": "Kasutatud autode müük Viljandis, Pärnu mnt 3. Kõik müügis olevad autod ühel lehel.",
 "bg": "#f2f5f8", "accent": "#1f5f99", "pic": "linear-gradient(135deg,#c9d9e8,#183a5c)",
 "h1": "Kasutatud autod Viljandis", "lead": "Kõik müügis olevad autod ühel lehel — fotod, hind ja läbisõit. Pärnu mnt 3, Viljandi.", "cta": "Vaata autosid", "svc_title": "Müügis",
-"services": [["Audi A6 Avant", "Fotod, hind ja andmed (täpsustame)."], ["VW Passat", "Fotod, hind ja andmed (täpsustame)."], ["Järgmine auto", "Uus kuulutus lisandub ühe minutiga."]],
+"services": [["Audi A6 Avant", "Fotod, hind ja andmed (täpsustame)."], ["VW Passat", "Fotod, hind ja andmed (täpsustame)."], ["Järgmine auto", "Uued autod lisame teie fotode järgi."]],
 "why": [["5,0 Facebookis", "1200 jälgijat."], ["Sky AutoSpa", "Auto puhastus samast kohast — skyautospa.ee."], ["Proovisõit", "Aeg vormiga."]],
 "contacts": ["Pärnu mnt 3, Viljandi", "Tel: +372 517 9499", "E-post: skyautomuuk@gmail.com", "Aeg kokkuleppel"]},
 {"slug": "kiiskar", "lang": "et", "schema": "AutoRepair", "name": "Kiiskar", "city": "Muhu", "street": "Liiva küla",
